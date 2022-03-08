@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { State } from "../state";
-import { createTodo, updateTodo } from "../state/action-creators";
+import { useDispatch, useSelector } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators, State } from "../state";
 
 // interface ITodo {
 //   todoId: string;
@@ -34,7 +34,11 @@ const Modal: React.FC<IProps> = ({
   updateId,
 }) => {
   const currentTodo = useSelector((state: State) => state.todo);
-
+  const dispatch = useDispatch();
+  const { createTodo, updateTodo } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
   //const [todo, setTodo] = useState<ITodo>();
   const [todo, setTodo] = useState(initialTodo);
 
@@ -52,7 +56,7 @@ const Modal: React.FC<IProps> = ({
     setTodo({ ...todo, [e.target.name]: e.target.value });
   };
 
-  const addTodo = () => {
+  const onCreateTodo = () => {
     createTodo(todo);
     setModalStatus(false);
     setTodo(initialTodo);
@@ -134,7 +138,7 @@ const Modal: React.FC<IProps> = ({
                   className="btn btn-primary"
                   onClick={(e) => {
                     e.preventDefault();
-                    addTodo();
+                    onCreateTodo();
                   }}
                 >
                   Add

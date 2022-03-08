@@ -129,11 +129,11 @@ const Todo: React.FC = () => {
                     </div>
                     <div className="option">
                       <div className="dropdown dropdown-left">
-                        <div tabIndex="0" className="m-1">
+                        <div tabIndex={0} className="m-1">
                           <i className="fas fa-ellipsis-v text-gray-600 cursor-pointer p-1"></i>
                         </div>
                         <ul
-                          tabIndex="0"
+                          tabIndex={0}
                           className="shadow menu dropdown-content bg-base-100 rounded-box w-24 "
                         >
                           <li>

@@ -34,7 +34,7 @@ export const updateTodo =
     try {
       const response = await axios.put("todo/" + id + ".json", action);
       dispatch({
-        type: ActionType.DELETE_TODO,
+        type: ActionType.UPDATE_TODO,
         payload: response,
       });
     } catch (error) {}
@@ -45,8 +45,8 @@ export const deleteTodo =
     try {
       const response = await axios.delete("todo/" + action + ".json");
       dispatch({
-        type: ActionType.UPDATE_TODO,
-        payload: response,
+        type: ActionType.DELETE_TODO,
+        payload: action,
       });
     } catch (error) {
       return error;
