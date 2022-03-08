@@ -42,7 +42,7 @@ const reducer = (state: TodoState = initialState, action: Action) => {
           }
         );
       }, 0);
-      return state;
+      return { ...state };
     case ActionType.READ_TODO:
       for (const key in payload) {
         state.todos.push({ ...payload[key], todoId: key });
@@ -59,7 +59,7 @@ const reducer = (state: TodoState = initialState, action: Action) => {
           // console.log(element)
         }
       });
-      return state;
+      return { ...state };
     case ActionType.DELETE_TODO:
       gsap.to(".todo" + payload, {
         x: 100,
@@ -76,9 +76,9 @@ const reducer = (state: TodoState = initialState, action: Action) => {
           console.log(removeTodo);
         },
       });
-      return state;
+      return { ...state };
     default:
-      return state;
+      return { ...state };
   }
 };
 
