@@ -19,7 +19,7 @@ const Todo: React.FC = () => {
   useEffect(() => {
     readTodo();
     console.log(currentTodo);
-    console.log()
+    console.log();
   }, []);
 
   const onDeleteTodo = (todoId: string) => {
@@ -30,7 +30,7 @@ const Todo: React.FC = () => {
     setUpdateId(todoId);
   };
 
-  const filtered = currentTodo?.todo.filter((item: any) => {
+  const filtered = currentTodo.todos.filter((item: any) => {
     return Object.keys(item).some((key) =>
       item[key].toString().toLowerCase().includes(search.toLocaleLowerCase())
     );
@@ -86,7 +86,7 @@ const Todo: React.FC = () => {
               <div className="priority w-28">Priority</div>
             </div>
           </div>
-          <div className=" add-ToDo my-2 p-2 border-primary border-dashed border-2 rounded-box">
+          <div className=" add-ToDo my-2 p-2 text-left border-primary border-dashed border-2 rounded-box">
             <a
               className="cursor-pointer"
               onClick={(e) => {
@@ -129,10 +129,13 @@ const Todo: React.FC = () => {
                     </div>
                     <div className="option">
                       <div className="dropdown dropdown-left">
-                        <div className="m-1">
+                        <div tabIndex="0" className="m-1">
                           <i className="fas fa-ellipsis-v text-gray-600 cursor-pointer p-1"></i>
                         </div>
-                        <ul className="shadow menu dropdown-content bg-base-100 rounded-box w-24 ">
+                        <ul
+                          tabIndex="0"
+                          className="shadow menu dropdown-content bg-base-100 rounded-box w-24 "
+                        >
                           <li>
                             <a
                               onClick={(e) => {

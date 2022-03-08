@@ -40,7 +40,7 @@ const Modal: React.FC<IProps> = ({
 
   useEffect(() => {
     if (modalStatus) {
-      currentTodo?.todo.forEach((element: any) => {
+      currentTodo.todos.forEach((element: any) => {
         if (element.todoId === updateId) {
           setTodo({ ...element });
         }
@@ -96,35 +96,38 @@ const Modal: React.FC<IProps> = ({
                 className="input input-primary input-bordered"
               />
             </div>
-            <select
-              name="todoStatus"
-              // defaultValue={'DEFAULT'}
-              value={todo.todoStatus}
-              onChange={(e) => handleChangeInput(e)}
-              className="select select-bordered select-primary max-w-xs mr-5"
-            >
-              {/* <option value="DEFAULT" disabled  >
+            <div className="w-full flex">
+              <select
+                name="todoStatus"
+                // defaultValue={'DEFAULT'}
+                value={todo.todoStatus}
+                onChange={(e) => handleChangeInput(e)}
+                className="select select-bordered select-primary flex-1 max-w-full mr-5"
+              >
+                {/* <option value="DEFAULT" disabled  >
                             Choose your to do status
                         </option> */}
-              <option value="Not Started">Not Started</option>
-              <option value="In Review">In Review</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Completed">Completed</option>
-            </select>
-            <select
-              name="todoPriority"
-              // defaultValue={'DEFAULT'}
-              value={todo.todoPriority}
-              onChange={(e) => handleChangeInput(e)}
-              className="select select-bordered select-primary max-w-xs"
-            >
-              {/* <option value="DEFAULT" disabled >
+                <option value="Not Started">Not Started</option>
+                <option value="In Review">In Review</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+              <select
+                name="todoPriority"
+                // defaultValue={'DEFAULT'}
+                value={todo.todoPriority}
+                onChange={(e) => handleChangeInput(e)}
+                className="select select-bordered select-primary flex-1  max-w-full"
+              >
+                {/* <option value="DEFAULT" disabled >
                             Choose your to do priority
                         </option> */}
-              <option value="Low Priority">Low Priority</option>
-              <option value="Medium Priority">Medium Priority</option>
-              <option value="High Priority">High Priority</option>
-            </select>
+                <option value="Low Priority">Low Priority</option>
+                <option value="Medium Priority">Medium Priority</option>
+                <option value="High Priority">High Priority</option>
+              </select>
+            </div>
+
             <div className="modal-action">
               {addButtonStatus && (
                 <a
